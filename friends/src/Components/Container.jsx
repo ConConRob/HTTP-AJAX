@@ -47,17 +47,26 @@ export default class Container extends React.Component{
             }
         })
         .then(res => this.setListOfFriends(res.data))
+        .catch(error=>console.log(error));     
+    }
+
+    deleteFriend = (id) =>{
+        axios({
+            method:'delete',
+            url:`${serverURL}/${id}`,
+        })
+        .then(res=> this.setListOfFriends(res.data))
         .catch(error=>console.log(error));
-            
-                
-            
     }
 
     render(){
         return(
             <>
                 <NewFriendForm addFriend={this.addFriend} />
-                <FriendsList listOfFriends={this.state.listOfFriends} />
+                <FriendsList 
+                    listOfFriends={this.state.listOfFriends}
+                    deleteFriend={this.deleteFriend} 
+                />
                 <Route 
                     path='/friends/edit/:id' 
                     render={(props) => <FriendEditer

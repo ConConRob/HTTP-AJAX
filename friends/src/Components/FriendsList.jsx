@@ -8,7 +8,7 @@ const StyledFriendsList = styled.ul`
     }
 `
 
-export default function FriendsList({listOfFriends}){
+export default function FriendsList({listOfFriends, deleteFriend}){
     return(
         <StyledFriendsList>
             {
@@ -18,6 +18,11 @@ export default function FriendsList({listOfFriends}){
                         <span>{friend.age}</span>
                         <span>{friend.email}</span>
                         <Link to={`/friends/edit/${friend.id}`}>Edit</Link>
+                        <button 
+                            onClick={()=>deleteFriend(friend.id)}
+                        >
+                        Delete
+                        </button>
                     </li>)
             }
         </StyledFriendsList>
