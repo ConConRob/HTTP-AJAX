@@ -9,7 +9,7 @@ export default function FriendsList({listOfFriends}){
     return(
         <StyledFriendsList>
             {
-                listOfFriends.map(friend => <li>{friend}</li>)
+                listOfFriends.map(friend => <li key={friend.id} >{friend.name}</li>)
             }
         </StyledFriendsList>
     )
