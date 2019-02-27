@@ -1,10 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
+import { withRouter } from "react-router-dom";
 const StyledFriendEditor = styled.form`
 
 `
 
-export default class FriendEditor extends React.Component{
+export class FriendEditor extends React.Component{
     constructor(props){
         super(props);
         this.id= props.match.params.id;
@@ -15,9 +16,8 @@ export default class FriendEditor extends React.Component{
             email: '',
         }
     }
-    
+
     componentDidMount(){
-        
         this.setCurrentFriend(
             this.props.listOfFriends.find(friend=> 
                 friend.id.toString()===this.props.match.params.id
@@ -51,6 +51,7 @@ export default class FriendEditor extends React.Component{
     handleFormSubmit = (event) =>{
         event.preventDefault();
         this.props.editFriend(this.state.name, this.state.age, this.state.email, this.state.currentFriend.id)
+        this.props.history.push("/friends");
     }
     render() {
         if(!this.state.currentFriend){
@@ -82,3 +83,5 @@ export default class FriendEditor extends React.Component{
     }
 
 }
+
+export default withRouter(FriendEditor);
