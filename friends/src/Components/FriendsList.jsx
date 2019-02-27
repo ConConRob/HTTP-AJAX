@@ -6,6 +6,22 @@ const StyledFriendsList = styled.ul`
     span{
      padding: 10px;   
     }
+    li{
+        display: flex;
+        align-items: baseline;
+    }
+    button{
+        margin-left: 30px;
+    }
+    .friend-name{
+        width: 100px;
+    }
+    .friend-age{
+        width: 60px;
+    }
+    .friend-email{
+        width: 200px;
+    }
 `
 
 export default function FriendsList({listOfFriends, deleteFriend}){
@@ -14,9 +30,9 @@ export default function FriendsList({listOfFriends, deleteFriend}){
             {
                 listOfFriends.map(friend => 
                     <li key={friend.id} >
-                        <span>{friend.name}</span>
-                        <span>{friend.age}</span>
-                        <span>{friend.email}</span>
+                        <span className="friend-name">{friend.name}</span>
+                        <span className="friend-age">{friend.age}</span>
+                        <span className="friend-email">{friend.email}</span>
                         <Link to={`/friends/edit/${friend.id}`}>Edit</Link>
                         <button 
                             onClick={()=>deleteFriend(friend.id)}

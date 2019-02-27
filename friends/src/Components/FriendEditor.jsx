@@ -18,11 +18,9 @@ export class FriendEditor extends React.Component{
     }
 
     componentDidMount(){
-        this.setCurrentFriend(
-            this.props.listOfFriends.find(friend=> 
-                friend.id.toString()===this.props.match.params.id
-            )
-        )
+        const currentFriend = this.props.listOfFriends.find(friend=> friend.id.toString()===this.props.match.params.id);
+        this.setCurrentFriend(currentFriend)
+        this.setState({...currentFriend})
     }
     componentDidUpdate(){
         const currentFriend = this.props.listOfFriends.find(friend=> friend.id.toString()===this.props.match.params.id);
@@ -60,18 +58,21 @@ export class FriendEditor extends React.Component{
         return(
             <StyledFriendEditor onSubmit={this.handleFormSubmit}>
                 <input
+                    required
                     onChange={(event)=>this.setName(event.target.value)}   
                     type="text" 
                     placeholder="Friend's Name" 
                     value={this.state.name}
                 />
                 <input 
+                    required
                     onChange={(event)=>this.setAge(event.target.value)}
                     type="number" 
                     placeholder="Friend's Age" 
                     value={this.state.age}
                 />
                 <input
+                    required
                     onChange={(event)=>this.setEmail(event.target.value)} 
                     type="email" 
                     placeholder="Friend's Email" 

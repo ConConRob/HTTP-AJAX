@@ -40,19 +40,22 @@ export default class NewFriendForm extends React.Component{
     render(){
         return (
             <StyledNewFriendForm onSubmit={this.handleSubmit} >
-                <input 
+                <input
+                    required 
                     onChange={this.setNameInput} 
                     type="text" 
                     placeholder="Friend's Name" 
                     value={this.state.nameInput}
                 />
-                <input 
+                <input
+                    required  
                     onChange={this.setAgeInput} 
                     type="number" 
                     placeholder="Friend's Age" 
                     value={this.state.ageInput}
                 />
-                <input 
+                <input
+                    required  
                     onChange={this.setEmailInput} 
                     type="email" 
                     placeholder="Friend's Email" 
