@@ -24,10 +24,17 @@ export default class NewFriendForm extends React.Component{
     setEmailInput = (event) => {
         this.setState({emailInput: event.target.value})
     }
-    
+    resetState = () => {
+        this.setState({
+            nameInput:'',
+            ageInput: '',
+            emailInput:'',
+        })
+    }
     handleSubmit = (event) => {
         event.preventDefault();
         this.props.addFriend(this.state.nameInput, this.state.ageInput, this.state.emailInput)
+        this.resetState();
     }
 
     render(){
