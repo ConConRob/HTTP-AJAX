@@ -2,6 +2,31 @@ import React from 'react';
 import styled from 'styled-components';
 
 const StyledNewFriendForm = styled.form`
+    padding-top: 30vh;
+    display:flex;
+    align-items: center;
+    flex-direction: column;
+    height: 30vh;
+    justify-content:space-around;
+    input{
+        width:300px;
+        padding: 6px;
+        &:focus{
+            background: lightsalmon;
+            outline: none;
+            font-size: 18px;
+        }
+    }
+    button{
+        width:300px;
+        padding: 6px;
+        margin:0;
+        border:0;
+        &:hover{
+            background: lightsalmon;
+            cursor: pointer;
+        }
+    }
 `
 
 export default class NewFriendForm extends React.Component{
@@ -40,6 +65,7 @@ export default class NewFriendForm extends React.Component{
     render(){
         return (
             <StyledNewFriendForm onSubmit={this.handleSubmit} >
+                <h2>Who are we kidding? You don't have any friends.</h2>
                 <input
                     required 
                     onChange={this.setNameInput} 

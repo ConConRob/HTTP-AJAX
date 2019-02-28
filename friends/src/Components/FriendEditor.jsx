@@ -2,7 +2,31 @@ import React from 'react';
 import styled from 'styled-components';
 import { withRouter } from "react-router-dom";
 const StyledFriendEditor = styled.form`
-
+    padding-top: 30vh;
+    display:flex;
+    align-items: center;
+    flex-direction: column;
+    height: 30vh;
+    justify-content:space-around;
+    input{
+        width:300px;
+        padding: 6px;
+        &:focus{
+            background: lightsalmon;
+            outline: none;
+            font-size: 18px;
+        }
+    }
+    button{
+        width:300px;
+        padding: 6px;
+        margin:0;
+        border:0;
+        &:hover{
+            background: lightsalmon;
+            cursor: pointer;
+        }
+    }
 `
 
 export class FriendEditor extends React.Component{

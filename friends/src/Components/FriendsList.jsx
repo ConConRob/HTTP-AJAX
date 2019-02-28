@@ -9,6 +9,7 @@ const StyledFriendsList = styled.ul`
     li{
         display: flex;
         align-items: baseline;
+        justify-content: space-around;
     }
     button{
         margin-left: 30px;
@@ -22,11 +23,22 @@ const StyledFriendsList = styled.ul`
     .friend-email{
         width: 200px;
     }
+    .titles{
+        font-weight:bold;
+    }
 `
 
 export default function FriendsList({listOfFriends, deleteFriend}){
     return(
         <StyledFriendsList>
+            
+            <li className="titles">
+                 <span className="friend-name">Name</span>
+                    <span className="friend-age">Age</span>
+                    <span className="friend-email">Email</span>
+                    <span>Edit</span>
+                    <span>Delete</span>
+            </li>
             {
                 listOfFriends.map(friend => 
                     <li key={friend.id} >
