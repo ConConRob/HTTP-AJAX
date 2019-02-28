@@ -81,6 +81,7 @@ export class FriendEditor extends React.Component{
         }
         return(
             <StyledFriendEditor onSubmit={this.handleFormSubmit}>
+            <h2>Wow you must be a great friend considering you can't even get his info right.</h2>
                 <input
                     required
                     onChange={(event)=>this.setName(event.target.value)}   
