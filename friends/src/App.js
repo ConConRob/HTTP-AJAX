@@ -10,6 +10,9 @@ const StyledApp = styled.div`
     display:flex;
     justify-content: space-around;
   }
+  h1{
+    text-align:center;
+  }
 `
 class App extends Component {
   render() {
@@ -23,7 +26,7 @@ class App extends Component {
             }
           />
         </nav>
-       
+        <Route exact path='/' render={()=><h1>WELLCOME HOME</h1>} />
         <Route path='/friends' component={Container} />
 
       </StyledApp>
