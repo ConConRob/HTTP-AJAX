@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Container from './Components/Container';
-import {Route, Link} from 'react-router-dom';
+import {Route, NavLink} from 'react-router-dom';
 import styled from 'styled-components';
 
 const StyledApp = styled.div`
@@ -9,6 +9,10 @@ const StyledApp = styled.div`
   nav{
     display:flex;
     justify-content: space-around;
+    a{text-decoration: none;}
+    .active{
+      border-bottom: 2px solid lightsalmon;
+    }
   }
   h1{
     text-align:center;
@@ -19,10 +23,10 @@ class App extends Component {
     return (
       <StyledApp>
         <nav>
-          <Link to='/'>Home</Link>
-          <Link to='/friends/'>See Friends</Link>
+          <NavLink exact to='/'>Home</NavLink>
+          <NavLink exact to='/friends/'>See Friends</NavLink>
           <Route path='/friends/' render={()=>
-              <Link to='/friends/add'>Add Friends</Link>
+              <NavLink exact to='/friends/add'>Add Friends</NavLink>
             }
           />
         </nav>
