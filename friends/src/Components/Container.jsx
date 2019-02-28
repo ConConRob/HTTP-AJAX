@@ -1,7 +1,7 @@
 import React from 'react';
 import FriendsList from './FriendsList';
 import NewFriendForm from './NewFriendForm';
-import {Route, Link} from 'react-router-dom';
+import {Route} from 'react-router-dom';
 import FriendEditer from './FriendEditor'
 import axios from 'axios';
 
@@ -61,11 +61,18 @@ export default class Container extends React.Component{
 
     render(){
         return(
-            <>
-                <NewFriendForm addFriend={this.addFriend} />
-                <FriendsList 
-                    listOfFriends={this.state.listOfFriends}
-                    deleteFriend={this.deleteFriend} 
+            <>  
+                <Route exact path='/friends/'
+                    render={()=> <FriendsList 
+                        listOfFriends={this.state.listOfFriends}
+                        deleteFriend={this.deleteFriend} 
+                    />
+                    }
+                />
+                <Route path='/friends/add'
+                    render={()=> <NewFriendForm 
+                        addFriend={this.addFriend} />
+                    }
                 />
                 <Route 
                     path='/friends/edit/:id' 
