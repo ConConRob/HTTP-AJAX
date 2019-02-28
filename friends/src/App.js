@@ -1,26 +1,39 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Container from './Components/Container';
+import {Route, NavLink} from 'react-router-dom';
+import styled from 'styled-components';
 
+const StyledApp = styled.div`
+  max-width: 1000px;
+  margin: 0 auto;
+  nav{
+    display:flex;
+    justify-content: space-around;
+    a{text-decoration: none;}
+    .active{
+      border-bottom: 2px solid lightsalmon;
+    }
+  }
+  h1{
+    text-align:center;
+  }
+`
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+      <StyledApp>
+        <nav>
+          <NavLink exact to='/'>Home</NavLink>
+          <NavLink exact to='/friends/'>See Friends</NavLink>
+          <Route path='/friends/' render={()=>
+              <NavLink exact to='/friends/add'>Add Friends</NavLink>
+            }
+          />
+        </nav>
+        <Route exact path='/' render={()=><h1>WELLCOME HOME</h1>} />
+        <Route path='/friends' component={Container} />
+
+      </StyledApp>
     );
   }
 }
